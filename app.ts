@@ -37,7 +37,7 @@ const loggerOptions: expressWinston.LoggerOptions = {
     ),
 }
 
-// app.use(expressWinston.logger(loggerOptions));
+app.use(expressWinston.logger(loggerOptions));
 
 
 const start = async () => {
@@ -108,9 +108,9 @@ const start = async () => {
         console.log('Running on http ' + process.env.PORT);
     });
 
-    httpsServer.listen(process.env.PORT_HTTPS, () => {
-        console.log('Running on https ' + process.env.PORT_HTTPS);
-    });
+    // httpsServer.listen(process.env.PORT_HTTPS, () => {
+    //     console.log('Running on https ' + process.env.PORT_HTTPS);
+    // });
 };
 
 start().catch(console.error);

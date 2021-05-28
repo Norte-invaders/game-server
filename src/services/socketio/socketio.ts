@@ -3,12 +3,12 @@ import * as https from "https";
 import {Server, Socket} from 'socket.io';
 import User from "../../entities/user";
 import Room from "../../entities/room";
-import RoomsDao from "../../rooms/daos/rooms.dao";
 import RoomsService from "../../rooms/services/rooms.services";
 
 
 class Socketio {
     private ioHttp: Server;
+    // @ts-ignore
     private ioHttps: Server;
 
     constructor(httpServer: http.Server, httpsServer: https.Server) {
@@ -69,16 +69,19 @@ class Socketio {
         });
 
         socket.on('send-aliens', aliens => {
+            // @ts-ignore
             socket.to(socket.roomTitle).emit('update-aliens', JSON.parse(aliens));
             console.log(JSON.parse(aliens))
         })
 
         socket.on('initialize-room', (player1, player2) => {
+            // @ts-ignore
             socket.to(socket.roomTitle).emit('room-initialized', player1, player2);
             socket.emit('room-initialized', player1, player2);
         })
 
         socket.on('remote-send', (data) => {
+            // @ts-ignore
             socket.to(socket.roomTitle).emit('player-updated', data);
         });
 
