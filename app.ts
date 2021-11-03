@@ -43,59 +43,6 @@ app.use(expressWinston.logger(loggerOptions));
 const start = async () => {
     await createConnection();
 
-    // const user = await User.create({nickname: 'test3'})
-    // console.log(user)
-    // await user.save();
-    //
-    // const user2 = await User.create({nickname: 'test34'})
-    // console.log(user)
-    // await user2.save();
-    //
-    // const room = await Room.create({title: 'test room multi 1233', maxParticipants: 2, joinCode: 'JOINCO123123123DE', ownerId: user.id})
-    // console.log(room)
-    // await room.save()
-    //
-    // console.log(await Room.find({
-    //     where: {
-    //         ownerId: user.id
-    //     },
-    //     relations: ['owner']
-    // }))
-    //
-    // const roomsUser = await RoomUsers.create({userId: user.id, roomId: room.id})
-    // const roomsUser2 = await RoomUsers.create({userId: user2.id, roomId: room.id})
-    //
-    // await roomsUser.save();
-    // await roomsUser2.save();
-    //
-    //
-    // const result2 = await RoomUsers.find({
-    //     where: {
-    //         roomId: room.id,
-    //     },
-    //     relations: ['user', 'room']
-    // })
-    //
-    // console.log(result2);
-    // console.log(result2[0]);
-    // console.log(result2[0].user);
-
-    // const result = await User.find({
-    //     relations: ['joinedRooms']
-    // })
-    //
-    // console.log(result)
-    //
-    // const result2 = await getRepository(User)
-    //     .createQueryBuilder("u")
-    //     .leftJoin(RoomUsers, "ru", 'ru."userId" = u.id')
-    //     .where('ru."roomId" = :roomId', {roomId: 19})
-    //     .getMany();
-    //
-    // console.log(result2)
-
-
-
     new Socketio(httpServer, httpsServer);
 
     routes.push(new UsersRoutes(app));
@@ -107,10 +54,6 @@ const start = async () => {
         });
         console.log('Running on http ' + process.env.PORT);
     });
-
-    // httpsServer.listen(process.env.PORT_HTTPS, () => {
-    //     console.log('Running on https ' + process.env.PORT_HTTPS);
-    // });
 };
 
 start().catch(console.error);
